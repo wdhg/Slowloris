@@ -59,8 +59,8 @@ def make_sockets(max_sockets, target):
         try:
             list_of_sockets.append(Sock(target))
             print("Socket successfully made [%s]" % str(index))
-        except Exception as e:
-            print(e)
+        except Exception as exception:
+            print(exception)
             print("Error making socket")
             pass
     return list_of_sockets
