@@ -1,3 +1,6 @@
+# Made by wdhg
+# www.github.com/wdhg
+
 import socket
 from random import randint
 from time import sleep
